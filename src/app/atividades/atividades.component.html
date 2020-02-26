@@ -1,0 +1,23 @@
+<h1>{{ titulo }}</h1>
+
+<section *ngFor="let grupo of grupos">
+  <h2>{{ grupo.titulo }}</h2>
+
+  <ul>
+    <li *ngFor="let atividade of grupo.atividades">
+      {{ atividade.descricao }} - {{ atividade.concluida }}
+    </li>
+  </ul>
+
+  <p *ngIf="numeroAtividadesConcluidasGrupo(grupo) < 1">
+    Você precisa se esforçar mais!
+  </p>
+  <p
+    *ngIf="numeroAtividadesConcluidasGrupo(grupo) > 0 && numeroAtividadesConcluidasGrupo(grupo) < grupo.atividades.length">
+    Continue, você está chegando lá!
+  </p>
+  <p *ngIf="numeroAtividadesConcluidasGrupo(grupo) === grupo.atividades.length">
+    Parabéns, você conseguiu!
+  </p>
+
+</section>
